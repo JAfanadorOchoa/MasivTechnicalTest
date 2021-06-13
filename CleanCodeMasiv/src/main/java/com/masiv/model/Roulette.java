@@ -1,10 +1,6 @@
 package com.masiv.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "roulette")
@@ -13,8 +9,6 @@ public class Roulette {
 	@Id
 	private long id;
 	private boolean status;
-	@DBRef(db = "bet")
-	private Set<Bet> betList = new HashSet<Bet>();
 	
 	public Roulette() {
 		super();

@@ -1,15 +1,17 @@
 package com.masiv.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "bet")
 public class Bet {
 
-	private long idBet;
+	@Id
+	private long id;
 	private long idUser;
 	private long idRoulette;
 	private double cashAmount;
-	private int betNumber;
+	private int betNumber = -1;
 	private String color;
 	
 	
@@ -17,29 +19,29 @@ public class Bet {
 		super();
 	}
 	
-	public Bet(long idBet, long idUser, long idRoulette, double cashAmount, int betNumber) {
+	public Bet(long id, long idUser, long idRoulette, double cashAmount, int betNumber) {
 		super();
-		this.idBet = idBet;
+		this.id = id;
 		this.idUser = idUser;
 		this.idRoulette = idRoulette;
 		this.cashAmount = cashAmount;
 		this.betNumber = betNumber;
 	}
 
-	public Bet(long idBet, long idUser, long idRoulette, double cashAmount, String color) {
+	public Bet(long id, long idUser, long idRoulette, double cashAmount, String color) {
 		super();
-		this.idBet = idBet;
+		this.id = id;
 		this.idUser = idUser;
 		this.idRoulette = idRoulette;
 		this.cashAmount = cashAmount;
 		this.color = color;
 	}
 
-	public long getIdBet() {
-		return idBet;
+	public long getId() {
+		return id;
 	}
-	public void setIdBet(long idBet) {
-		this.idBet = idBet;
+	public void setId(long id) {
+		this.id = id;
 	}
 	public long getIdUser() {
 		return idUser;
@@ -47,13 +49,7 @@ public class Bet {
 	public void setIdUser(long idUser) {
 		this.idUser = idUser;
 	}
-	public int getNumber() {
-		return betNumber;
-	}
-	public void setNumber(int betNumber) {
-		this.betNumber = betNumber;
-	}
-	public String isColor() {
+		public String isColor() {
 		return color;
 	}
 	public void setColor(String color) {

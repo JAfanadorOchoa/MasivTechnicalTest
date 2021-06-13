@@ -16,23 +16,34 @@ public class BetServices {
 	@Autowired
 	public RouletteServices rouletteServices;
 	
-	public boolean verifyBet(Bet bet) {
+	public String verifyBet(Bet bet) {
 		Roulette newRoulette = rouletteServices.getRoulette(bet.getIdRoulette());
-		if(newRoulette == null || !newRoulette.isStatus() || bet.getCashAmount() > 10000) {
-			return false;
-		}
-			return true;
+		if(newRoulette == null) 
+			return "The roulette does not exist";
+		if(!newRoulette.isStatus()) 
+			return "The roulette is closed";
+		if(bet.getCashAmount() > 10000) 
+			return "The cash limit is being overflowed";
+		if(bet.getBetNumber() < -1  || bet.getBetNumber() > 36)
+			return "The number bet is not accepted";
+		if (bet.getBetNumber() == -1 && bet.getColor() == (null))
+			return "The number bet is not accepted";
+		if(bet.getBetNumber() == -1 && (!bet.getColor().equalsIgnoreCase("red") || !bet.getColor().
+				equalsIgnoreCase("black")))
+			return "The color bet is not available";
+		return "correct";
 		}
 	
 	public String placeBet(Bet bet) {
-		if(verifyBet(bet)) {
+		String verify = verifyBet(bet);
+		if(verify.equals("correct")) {
 			Bet newBet = betRepository.save(bet);
 			if(newBet != null) {
 				return "The bet was created succesfully";
 			}else
 				return "The bet was not created successfully";
 		}else
-			return "The data provided is not correct";
+			return verify;
 		
 	}	
 		

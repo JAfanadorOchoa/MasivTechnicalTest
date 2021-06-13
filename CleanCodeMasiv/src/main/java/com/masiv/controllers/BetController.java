@@ -13,13 +13,15 @@ import com.masiv.services.BetServices;
 public class BetController {
 
 	@Autowired
-	public BetServices betServices;
+	private BetServices betServices;
 	
-	@PostMapping(value = "/place")
+	@PostMapping(value = "/bet/place")
 	public String placeBet(@RequestBody Bet bet, @RequestHeader Long idUser) {
 		bet.setIdUser(idUser);
 		String betStatus = betServices.placeBet(bet);
 		return betStatus;
 	}
+	
+	
 	
 }
