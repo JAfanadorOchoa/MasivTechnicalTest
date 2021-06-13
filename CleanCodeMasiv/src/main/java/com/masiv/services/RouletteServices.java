@@ -29,4 +29,8 @@ public class RouletteServices {
 		}else
 			return "Error: The roulette does not exist";
 	}
+	
+	public Roulette getRoulette(Long id) {
+		return rouletteRepository.findRouletteById(id);
+	}
 }

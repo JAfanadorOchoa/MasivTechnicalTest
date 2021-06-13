@@ -7,26 +7,34 @@ public class Bet {
 
 	private long idBet;
 	private long idUser;
+	private long idRoulette;
+	private double cashAmount;
 	private int betNumber;
 	private String color;
-	private double cashAmount;
+	
+	
 	public Bet() {
 		super();
 	}
-	public Bet(long idBet, long idUser, int number, double cashAmount) {
+	
+	public Bet(long idBet, long idUser, long idRoulette, double cashAmount, int betNumber) {
 		super();
 		this.idBet = idBet;
 		this.idUser = idUser;
-		this.betNumber = number;
+		this.idRoulette = idRoulette;
 		this.cashAmount = cashAmount;
+		this.betNumber = betNumber;
 	}
-	public Bet(long idBet, long idUser, String color, double cashAmount) {
+
+	public Bet(long idBet, long idUser, long idRoulette, double cashAmount, String color) {
 		super();
 		this.idBet = idBet;
 		this.idUser = idUser;
+		this.idRoulette = idRoulette;
+		this.cashAmount = cashAmount;
 		this.color = color;
-		this.cashAmount = cashAmount;
 	}
+
 	public long getIdBet() {
 		return idBet;
 	}
@@ -56,6 +64,26 @@ public class Bet {
 	}
 	public void setCashAmount(double cashAmount) {
 		this.cashAmount = cashAmount;
+	}
+
+	public long getIdRoulette() {
+		return idRoulette;
+	}
+
+	public void setIdRoulette(long idRoulette) {
+		this.idRoulette = idRoulette;
+	}
+
+	public int getBetNumber() {
+		return betNumber;
+	}
+
+	public void setBetNumber(int betNumber) {
+		this.betNumber = betNumber;
+	}
+
+	public String getColor() {
+		return color;
 	}
 	
 	
