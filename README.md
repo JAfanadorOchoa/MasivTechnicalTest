@@ -3,7 +3,7 @@
 
 [![N|Solid](https://masiv.com/wp-content/uploads/2020/07/yOAST-MasivMesa-de-trabajo-46.png)](https://nodesource.com/products/nsolid)
 
-The code was developed under Java using Bootstrap, it is escalated vertically using MongoDB.
+The code was developed under Java using Bootstrap, it is escalated horizontally using MongoDB.
 Clean code practices were taken into account to develop the test.
 # Endpoints
 
