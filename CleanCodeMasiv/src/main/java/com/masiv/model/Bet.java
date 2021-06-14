@@ -1,11 +1,13 @@
 package com.masiv.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "bet")
 public class Bet {
-
+	@Transient
+	public static final String SEQUENCE_NAME = "users_sequence";
 	@Id
 	private long id;
 	private long idUser;
@@ -13,7 +15,6 @@ public class Bet {
 	private double cashAmount;
 	private int betNumber = -1;
 	private String color;
-	
 	
 	public Bet() {
 		super();

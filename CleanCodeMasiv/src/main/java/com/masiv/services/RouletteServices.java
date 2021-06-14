@@ -25,7 +25,11 @@ public class RouletteServices {
 	@Autowired
 	public BetRepository betRepository;
 	
+	@Autowired
+	public SequenceGeneratorService sequenceGeneratorService;
+	
 	public Roulette createRoulette(Roulette roulette) {
+		roulette.setId(sequenceGeneratorService.generateSequence(Roulette.SEQUENCE_NAME));
 		return rouletteRepository.save(roulette);
 	}
 

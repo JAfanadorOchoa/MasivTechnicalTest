@@ -12,9 +12,10 @@ public class BetServices {
 
 	@Autowired
 	public BetRepository betRepository;
-	
 	@Autowired
 	public RouletteServices rouletteServices;
+	@Autowired
+	public SequenceGeneratorService sequenceGeneratorService; 
 	
 	public String verifyBet(Bet bet) {
 		Roulette newRoulette = rouletteServices.getRoulette(bet.getIdRoulette());
@@ -37,6 +38,7 @@ public class BetServices {
 	public String placeBet(Bet bet) {
 		String verify = verifyBet(bet);
 		if(verify.equals("correct")) {
+			bet.setId(sequenceGeneratorService.generateSequence(Bet.SEQUENCE_NAME));
 			Bet newBet = betRepository.save(bet);
 			if(newBet != null) {
 				return "The bet was created succesfully";
@@ -46,6 +48,4 @@ public class BetServices {
 			return verify;
 		
 	}	
-		
-	
 }
